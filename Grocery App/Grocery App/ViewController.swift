@@ -27,7 +27,9 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as? HeaderTableViewCell {
-            headerCell.emojiLabel.text = "🥬"
+            
+            headerCell.emojiLabel.text = Constants.SectionEmoji.dairy.rawValue
+            headerCell.sectionLabel.text = "Dairy"
             return headerCell
         } else {
             return UIView()
