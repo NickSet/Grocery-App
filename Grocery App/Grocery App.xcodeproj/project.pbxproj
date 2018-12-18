@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0147F7E021C99FE300863C89 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0147F7DF21C99FE300863C89 /* AddItemViewController.swift */; };
 		01481AA721C58747003A8EF7 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01481A9221C58746003A8EF7 /* M13Checkbox+IB.swift */; };
 		01481AA821C58747003A8EF7 /* M13CheckboxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01481A9321C58746003A8EF7 /* M13CheckboxController.swift */; };
 		01481AA921C58747003A8EF7 /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01481A9421C58747003A8EF7 /* M13CheckboxGestureRecognizer.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0147F7DF21C99FE300863C89 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		01481A9221C58746003A8EF7 /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "M13Checkbox+IB.swift"; sourceTree = "<group>"; };
 		01481A9321C58746003A8EF7 /* M13CheckboxController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxController.swift; sourceTree = "<group>"; };
 		01481A9421C58747003A8EF7 /* M13CheckboxGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0147F7DE21C99FC600863C89 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0147F7DF21C99FE300863C89 /* AddItemViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		01481A9121C58728003A8EF7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 		01B09A3021C4240C009F3F01 /* Grocery App */ = {
 			isa = PBXGroup;
 			children = (
+				0147F7DE21C99FC600863C89 /* Controller */,
 				01481A9121C58728003A8EF7 /* Sources */,
 				0155D54521C47F6200ABDFCB /* View */,
 				01B09A3121C4240C009F3F01 /* AppDelegate.swift */,
@@ -238,6 +249,7 @@
 				01481AB621C58747003A8EF7 /* M13CheckboxFillController.swift in Sources */,
 				01481AAB21C58747003A8EF7 /* M13CheckboxCheckPathGenerator.swift in Sources */,
 				01481AAD21C58747003A8EF7 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
+				0147F7E021C99FE300863C89 /* AddItemViewController.swift in Sources */,
 				01481AB121C58747003A8EF7 /* DefaultValues.swift in Sources */,
 				01481AB221C58747003A8EF7 /* M13CheckboxExpandController.swift in Sources */,
 				01B09A3421C4240C009F3F01 /* ViewController.swift in Sources */,
