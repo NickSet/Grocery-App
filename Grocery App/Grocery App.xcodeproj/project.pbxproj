@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010CF78C21CABD4800A49D4F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010CF78B21CABD4800A49D4F /* Item.swift */; };
 		0147F7E021C99FE300863C89 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0147F7DF21C99FE300863C89 /* AddItemViewController.swift */; };
 		01481AA721C58747003A8EF7 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01481A9221C58746003A8EF7 /* M13Checkbox+IB.swift */; };
 		01481AA821C58747003A8EF7 /* M13CheckboxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01481A9321C58746003A8EF7 /* M13CheckboxController.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		010CF78B21CABD4800A49D4F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		0147F7DF21C99FE300863C89 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		01481A9221C58746003A8EF7 /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "M13Checkbox+IB.swift"; sourceTree = "<group>"; };
 		01481A9321C58746003A8EF7 /* M13CheckboxController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		010CF78A21CABCFA00A49D4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				010CF78B21CABD4800A49D4F /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0147F7DE21C99FC600863C89 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,7 +178,7 @@
 		01B09A3021C4240C009F3F01 /* Grocery App */ = {
 			isa = PBXGroup;
 			children = (
-				01B16AC621CAB827005D7EBA /* GoogleService-Info.plist */,
+				010CF78A21CABCFA00A49D4F /* Model */,
 				0147F7DE21C99FC600863C89 /* Controller */,
 				01481A9121C58728003A8EF7 /* Sources */,
 				0155D54521C47F6200ABDFCB /* View */,
@@ -177,6 +187,7 @@
 				01B09A3521C4240C009F3F01 /* Main.storyboard */,
 				01B09A3821C4240D009F3F01 /* Assets.xcassets */,
 				01B09A3A21C4240D009F3F01 /* LaunchScreen.storyboard */,
+				01B16AC621CAB827005D7EBA /* GoogleService-Info.plist */,
 				01B09A3D21C4240D009F3F01 /* Info.plist */,
 				01481ABE21C593C8003A8EF7 /* Constants.swift */,
 			);
@@ -280,6 +291,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Grocery App/Pods-Grocery App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -287,6 +299,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +356,7 @@
 				01481AA821C58747003A8EF7 /* M13CheckboxController.swift in Sources */,
 				01481AB721C58747003A8EF7 /* M13CheckboxStrokeController.swift in Sources */,
 				01481AAA21C58747003A8EF7 /* M13CheckboxPathGenerator.swift in Sources */,
+				010CF78C21CABD4800A49D4F /* Item.swift in Sources */,
 				01481AA921C58747003A8EF7 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				01481AB921C58747003A8EF7 /* M13CheckboxDotController.swift in Sources */,
 				01481ABD21C59062003A8EF7 /* HeaderTableViewCell.swift in Sources */,

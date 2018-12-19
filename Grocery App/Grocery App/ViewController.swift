@@ -7,16 +7,21 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
 
     @IBOutlet var itemTableView: UITableView!
+    
+    var ref: DatabaseReference!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         itemTableView.delegate = self
         itemTableView.dataSource = self
+        ref = Database.database().reference()
     }
     
 }
