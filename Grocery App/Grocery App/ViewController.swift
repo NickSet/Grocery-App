@@ -19,18 +19,16 @@ class ViewController: UIViewController {
         itemTableView.dataSource = self
     }
     
-    @IBAction func AddItemButtonTapped(_ sender: UIButton) {
-        let addItemViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddItemViewController") as! UIViewController
-        addItemViewController.providesPresentationContextTransitionStyle = true
-        addItemViewController.definesPresentationContext = true
-        addItemViewController.modalPresentationStyle=UIModalPresentationStyle.overCurrentContext
-        self.present(addItemViewController, animated: true, completion: nil)
-        
-        // Make sure your vc2 background color is transparent
-//        addItemViewController.view.backgroundColor = UIColor.clear
+}
+
+// MARK: - IBActions
+extension ViewController {
+    @IBAction func saveItem(_ segue: UIStoryboardSegue) {
+        print("Back in ViewController")
     }
 }
 
+// MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
@@ -65,6 +63,7 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - UITableViewDelegate
 extension ViewController: UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
