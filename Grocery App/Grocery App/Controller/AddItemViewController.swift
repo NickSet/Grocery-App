@@ -36,12 +36,18 @@ class AddItemViewController: UIViewController {
     func validateItem() {
         guard let _ = selectedCategory, let _ = itemNameTextField.text else {
             addItemButton.isEnabled = false
+            addItemButton.backgroundColor = .white
+            addItemButton.tintColor = UIColor(displayP3Red: 161.0/255.0, green: 161.0/255.0, blue: 161.0/255.0, alpha: 1.0)
             return
         }
         guard let itemName = itemNameTextField.text, itemName.count > 0 else {
             addItemButton.isEnabled = false
+            addItemButton.backgroundColor = UIColor.clear
+            addItemButton.tintColor = UIColor(displayP3Red: 161.0/255.0, green: 161.0/255.0, blue: 161.0/255.0, alpha: 1.0)
             return
         }
+        addItemButton.backgroundColor = UIColor(displayP3Red: 20.0/255.0, green: 145.0/255.0, blue: 47.0/255.0, alpha: 1.0)
+        addItemButton.tintColor = .white
         addItemButton.isEnabled = true
     }
     
