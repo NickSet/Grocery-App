@@ -261,10 +261,28 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldChanged:" destination="gHj-iT-z5A" eventType="editingChanged" id="iOQ-cN-GDa"/>
+                                        </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRx-NB-Vq8">
-                                        <rect key="frame" x="172.5" y="166" width="30" height="30"/>
-                                        <state key="normal" title="Add"/>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRx-NB-Vq8">
+                                        <rect key="frame" x="147.5" y="164" width="80" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Q0i-S9-BZO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Add Item"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="hzn-CG-C8f" kind="unwind" identifier="SaveItem" unwindAction="saveItem:" id="PMm-uz-wlG"/>
                                         </connections>
@@ -303,6 +321,9 @@
                             <constraint firstItem="ebk-Pe-dBx" firstAttribute="bottom" secondItem="8Vf-zx-yd7" secondAttribute="bottom" constant="-216" id="prj-wW-XwH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Vf-zx-yd7"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ksZ-CY-MEH" appends="YES" id="4xy-Tw-doH"/>
+                        </connections>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="200"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -321,6 +342,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPb-2j-pZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hzn-CG-C8f" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="down" id="ksZ-CY-MEH">
+                    <connections>
+                        <segue destination="hzn-CG-C8f" kind="unwind" unwindAction="closeAddItemViewConroller:" id="eZD-NR-G1h"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="916" y="134"/>
         </scene>

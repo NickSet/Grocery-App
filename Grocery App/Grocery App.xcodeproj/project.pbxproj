@@ -31,6 +31,7 @@
 		01481ABD21C59062003A8EF7 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01481ABC21C59062003A8EF7 /* HeaderTableViewCell.swift */; };
 		01481ABF21C593C8003A8EF7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01481ABE21C593C8003A8EF7 /* Constants.swift */; };
 		0155D54821C47F9500ABDFCB /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0155D54621C47F9500ABDFCB /* ItemTableViewCell.swift */; };
+		0159DFCA21CC4AB40051A908 /* UIButton-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159DFC921CC4AB40051A908 /* UIButton-Extension.swift */; };
 		01B09A3221C4240C009F3F01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B09A3121C4240C009F3F01 /* AppDelegate.swift */; };
 		01B09A3421C4240C009F3F01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B09A3321C4240C009F3F01 /* ViewController.swift */; };
 		01B09A3721C4240C009F3F01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01B09A3521C4240C009F3F01 /* Main.storyboard */; };
@@ -65,6 +66,7 @@
 		01481ABC21C59062003A8EF7 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		01481ABE21C593C8003A8EF7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0155D54621C47F9500ABDFCB /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		0159DFC921CC4AB40051A908 /* UIButton-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton-Extension.swift"; sourceTree = "<group>"; };
 		01B09A2E21C4240C009F3F01 /* Grocery App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grocery App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B09A3121C4240C009F3F01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01B09A3321C4240C009F3F01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		0159DFC821CC4A970051A908 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0159DFC921CC4AB40051A908 /* UIButton-Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		01B09A2521C4240C009F3F01 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +188,7 @@
 		01B09A3021C4240C009F3F01 /* Grocery App */ = {
 			isa = PBXGroup;
 			children = (
+				0159DFC821CC4A970051A908 /* Extensions */,
 				010CF78A21CABCFA00A49D4F /* Model */,
 				0147F7DE21C99FC600863C89 /* Controller */,
 				01481A9121C58728003A8EF7 /* Sources */,
@@ -355,6 +366,7 @@
 				01481AB021C58747003A8EF7 /* M13CheckboxAnimationGenerator.swift in Sources */,
 				01481AA821C58747003A8EF7 /* M13CheckboxController.swift in Sources */,
 				01481AB721C58747003A8EF7 /* M13CheckboxStrokeController.swift in Sources */,
+				0159DFCA21CC4AB40051A908 /* UIButton-Extension.swift in Sources */,
 				01481AAA21C58747003A8EF7 /* M13CheckboxPathGenerator.swift in Sources */,
 				010CF78C21CABD4800A49D4F /* Item.swift in Sources */,
 				01481AA921C58747003A8EF7 /* M13CheckboxGestureRecognizer.swift in Sources */,

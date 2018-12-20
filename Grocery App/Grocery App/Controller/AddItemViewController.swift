@@ -14,7 +14,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet var quantityTextField: UITextField!
     @IBOutlet var buttonsArray: [UIButton]!
     @IBOutlet var addItemButton: UIButton!
-    
+
     var ref: DatabaseReference!
     var sections = ["produce", "meat", "dairy", "nonperishable", "snacks", "frozen", "toiletries"]
     var selectedCategory: Int? {
@@ -23,20 +23,31 @@ class AddItemViewController: UIViewController {
         }
     }
     
+    // TODO: Add smoother transition animation
+    override func viewWillDisappear(_ animated: Bool) {
+        view.backgroundColor = .clear
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference(withPath: "items")
     }
     
     func validateItem() {
-        guard let category = selectedCategory else {
+        guard let _ = selectedCategory, let _ = itemNameTextField.text else {
             addItemButton.isEnabled = false
+            addItemButton.backgroundColor = .white
+            addItemButton.tintColor = UIColor(displayP3Red: 161.0/255.0, green: 161.0/255.0, blue: 161.0/255.0, alpha: 1.0)
             return
         }
         guard let itemName = itemNameTextField.text, itemName.count > 0 else {
             addItemButton.isEnabled = false
+            addItemButton.backgroundColor = UIColor.clear
+            addItemButton.tintColor = UIColor(displayP3Red: 161.0/255.0, green: 161.0/255.0, blue: 161.0/255.0, alpha: 1.0)
             return
         }
+        addItemButton.backgroundColor = UIColor(displayP3Red: 20.0/255.0, green: 145.0/255.0, blue: 47.0/255.0, alpha: 1.0)
+        addItemButton.tintColor = .white
         addItemButton.isEnabled = true
     }
     
@@ -67,6 +78,10 @@ class AddItemViewController: UIViewController {
 
 //MARK: - IBActions
 extension AddItemViewController {
+    @IBAction func textFieldChanged(_ sender: UITextField) {
+        validateItem()
+    }
+    
     @IBAction func itemTypeButtonTapped(_ sender: UIButton) {
         updateButtonBorders(selected: sender.tag)
         selectedCategory = sender.tag
