@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddItemViewController: UIViewController {
     @IBOutlet var itemNameTextField: UITextField!
@@ -14,6 +15,8 @@ class AddItemViewController: UIViewController {
     @IBOutlet var buttonsArray: [UIButton]!
     @IBOutlet var addItemButton: UIButton!
     
+    var ref: DatabaseReference!
+    var sections = ["produce", "meat", "dairy", "nonperishable", "snacks", "frozen", "toiletries"]
     var selectedCategory: Int? {
         didSet {
             validateItem()
@@ -22,7 +25,7 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        ref = Database.database().reference(withPath: "items")
     }
     
     func validateItem() {
@@ -40,8 +43,15 @@ class AddItemViewController: UIViewController {
     // MARK: - Navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         if segue.identifier == "SaveItem", let itemName = itemNameTextField.text {
-            print(itemName)
-            print(selectedCategory)
+            let date = Date().description
+            print(date)
+            let quantity = quantityTextField.text ?? ""
+            let category = sections[selectedCategory!]
+            print(category)
+            let itemToSave = Item(name: itemName, dateAdded: date, category: category, quantity: quantity)
+            
+            let itemRef = self.ref.child(itemName.lowercased())
+            itemRef.setValue(itemToSave.toAnyObject())
         }
      }
     
