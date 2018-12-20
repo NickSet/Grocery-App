@@ -306,6 +306,9 @@
                             <constraint firstItem="ebk-Pe-dBx" firstAttribute="bottom" secondItem="8Vf-zx-yd7" secondAttribute="bottom" constant="-216" id="prj-wW-XwH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Vf-zx-yd7"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ksZ-CY-MEH" appends="YES" id="4xy-Tw-doH"/>
+                        </connections>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="200"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -324,6 +327,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPb-2j-pZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hzn-CG-C8f" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="down" id="ksZ-CY-MEH">
+                    <connections>
+                        <segue destination="hzn-CG-C8f" kind="unwind" unwindAction="closeAddItemViewConroller:" id="eZD-NR-G1h"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="916" y="134"/>
         </scene>

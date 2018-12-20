@@ -23,6 +23,11 @@ class AddItemViewController: UIViewController {
         }
     }
     
+    // TODO: Add smoother transition animation
+    override func viewWillDisappear(_ animated: Bool) {
+        view.backgroundColor = .clear
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference(withPath: "items")

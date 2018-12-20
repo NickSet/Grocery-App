@@ -65,6 +65,10 @@ extension ViewController {
     @IBAction func saveItem(_ segue: UIStoryboardSegue) {
         print("Back in ViewController")
     }
+    
+    @IBAction func closeAddItemViewConroller(_ segue: UIStoryboardSegue) {
+        print("Back in ViewController")
+    }
 }
 
 // MARK: - UITableViewDataSource
