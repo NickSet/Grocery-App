@@ -46,17 +46,12 @@ class AddItemViewController: UIViewController {
             let date = Date().description
             print(date)
             let quantity = quantityTextField.text ?? ""
+            let category = sections[selectedCategory!]
+            print(category)
+            let itemToSave = Item(name: itemName, dateAdded: date, category: category, quantity: quantity)
             
-            let itemToSave = Item(name: itemName, dateAdded: date, quantity: quantity)
-            
-            if let sectionIndex = selectedCategory {
-                let itemSectionRef = self.ref.child(sections[sectionIndex])
-                let itemRef = itemSectionRef.child(itemName.lowercased())
-                itemRef.setValue(itemToSave.toAnyObject())
-                
-            }
-            
-
+            let itemRef = self.ref.child(itemName.lowercased())
+            itemRef.setValue(itemToSave.toAnyObject())
         }
      }
     

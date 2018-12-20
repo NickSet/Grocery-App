@@ -18,14 +18,16 @@ struct Item {
     //TODO: Use this class to calculate how many days since the item was added. Convert from string to date and get difference.
     let dateAdded: String
     let addedBy: String
+    let category: String
     
-    init(name: String, key: String = "", dateAdded: String, quantity: String = "", addedBy: String = "") {
+    init(name: String, key: String = "", dateAdded: String, category: String, quantity: String = "", addedBy: String = "") {
         self.ref = nil
         self.key = key
         self.name = name
         self.dateAdded = dateAdded
         self.quantity = quantity
         self.addedBy = addedBy
+        self.category = category
     }
     
     init?(snapshot: DataSnapshot) {
@@ -34,7 +36,8 @@ struct Item {
             let name = value["name"] as? String,
             let dateAdded = value["dateAdded"] as? String,
             let quantity = value["quantity"] as? String,
-            let addedBy = value["addedBy"] as? String else {
+            let addedBy = value["addedBy"] as? String,
+            let category = value["category"] as? String else {
                 return nil
         }
         
@@ -44,6 +47,7 @@ struct Item {
         self.dateAdded = dateAdded
         self.quantity = quantity
         self.addedBy = addedBy
+        self.category = category
     }
     
     func toAnyObject() -> Any {
@@ -51,7 +55,8 @@ struct Item {
             "name": name,
             "dateAdded": dateAdded,
             "quantity": quantity,
-            "addedBy": addedBy
+            "addedBy": addedBy,
+            "category": category
         ]
     }
 }
