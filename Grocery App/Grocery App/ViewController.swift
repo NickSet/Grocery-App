@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     
 
+    @IBOutlet var addItemButton: UIButton!
     @IBOutlet var itemTableView: UITableView!
     
     var ref: DatabaseReference!
@@ -62,17 +63,34 @@ class ViewController: UIViewController {
 
 // MARK: - IBActions
 extension ViewController {
+    @IBAction func addItemButtonTapped(_ sender: UIButton) {
+        addItemButton.isHidden = true
+    }
+    
     @IBAction func saveItem(_ segue: UIStoryboardSegue) {
+        addItemButton.isHidden = false
         print("Back in ViewController")
     }
     
     @IBAction func closeAddItemViewConroller(_ segue: UIStoryboardSegue) {
+        addItemButton.isHidden = false
         print("Back in ViewController")
     }
 }
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let item = items[indexPath.row]
+            item.ref?.removeValue()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
     }
