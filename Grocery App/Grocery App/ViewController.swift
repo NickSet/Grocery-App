@@ -59,6 +59,20 @@ class ViewController: UIViewController {
         })
         self.itemTableView.reloadData()
     }
+    
+    func toggleCellCheckbox(_ cell: ItemTableViewCell, isCompleted: Bool) {
+        if !isCompleted {
+            cell.accessoryType = .none
+            cell.nameLabel.textColor = .black
+            cell.quantityLabel.textColor = .black
+            cell.dateLabel.textColor = .black
+        } else {
+            cell.accessoryType = .checkmark
+            cell.nameLabel.textColor = .gray
+            cell.quantityLabel.textColor = .gray
+            cell.dateLabel.textColor = .gray
+        }
+    }
 }
 
 // MARK: - IBActions
@@ -80,6 +94,19 @@ extension ViewController {
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? ItemTableViewCell else { return }
+        var item = items[indexPath.row]
+        let toggledCompletion = !item.completed
+        
+        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
+        item.completed = toggledCompletion
+        
+        item.ref?.updateChildValues([
+            "completed": toggledCompletion
+            ])
+    }
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -140,8 +167,10 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as? ItemTableViewCell {
-            cell.nameLabel.text = dataObjects[indexPath.section].sectionItems[indexPath.row].name
-            cell.quantityLabel.text = dataObjects[indexPath.section].sectionItems[indexPath.row].quantity
+            let item = dataObjects[indexPath.section].sectionItems[indexPath.row]
+            cell.nameLabel.text = item.name
+            cell.quantityLabel.text = item.quantity
+            toggleCellCheckbox(cell, isCompleted: item.completed)
             return cell
         } else {
             print("Couldn't Convert")

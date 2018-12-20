@@ -19,12 +19,14 @@ struct Item {
     let dateAdded: String
     let addedBy: String
     let category: String
+    var completed: Bool
     
-    init(name: String, key: String = "", dateAdded: String, category: String, quantity: String = "", addedBy: String = "") {
+    init(name: String, key: String = "", dateAdded: String, category: String, completed: Bool, quantity: String = "", addedBy: String = "") {
         self.ref = nil
         self.key = key
         self.name = name
         self.dateAdded = dateAdded
+        self.completed = completed
         self.quantity = quantity
         self.addedBy = addedBy
         self.category = category
@@ -35,6 +37,7 @@ struct Item {
             let value = snapshot.value as? [String: AnyObject],
             let name = value["name"] as? String,
             let dateAdded = value["dateAdded"] as? String,
+            let completed = value["completed"] as? Bool,
             let quantity = value["quantity"] as? String,
             let addedBy = value["addedBy"] as? String,
             let category = value["category"] as? String else {
@@ -45,6 +48,7 @@ struct Item {
         self.key = snapshot.key
         self.name = name
         self.dateAdded = dateAdded
+        self.completed = completed
         self.quantity = quantity
         self.addedBy = addedBy
         self.category = category
@@ -54,6 +58,7 @@ struct Item {
         return [
             "name": name,
             "dateAdded": dateAdded,
+            "completed": completed,
             "quantity": quantity,
             "addedBy": addedBy,
             "category": category

@@ -59,7 +59,7 @@ class AddItemViewController: UIViewController {
             let quantity = quantityTextField.text ?? ""
             let category = sections[selectedCategory!]
             print(category)
-            let itemToSave = Item(name: itemName, dateAdded: date, category: category, quantity: quantity)
+            let itemToSave = Item(name: itemName, dateAdded: date, category: category, completed: false, quantity: quantity)
             
             let itemRef = self.ref.child(itemName.lowercased())
             itemRef.setValue(itemToSave.toAnyObject())
