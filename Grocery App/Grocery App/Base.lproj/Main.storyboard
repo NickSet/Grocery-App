@@ -261,6 +261,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldChanged:" destination="gHj-iT-z5A" eventType="editingChanged" id="iOQ-cN-GDa"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRx-NB-Vq8">
                                         <rect key="frame" x="172.5" y="166" width="30" height="30"/>

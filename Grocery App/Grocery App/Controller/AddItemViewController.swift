@@ -14,7 +14,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet var quantityTextField: UITextField!
     @IBOutlet var buttonsArray: [UIButton]!
     @IBOutlet var addItemButton: UIButton!
-    
+
     var ref: DatabaseReference!
     var sections = ["produce", "meat", "dairy", "nonperishable", "snacks", "frozen", "toiletries"]
     var selectedCategory: Int? {
@@ -29,7 +29,7 @@ class AddItemViewController: UIViewController {
     }
     
     func validateItem() {
-        guard let category = selectedCategory else {
+        guard let _ = selectedCategory, let _ = itemNameTextField.text else {
             addItemButton.isEnabled = false
             return
         }
@@ -67,6 +67,10 @@ class AddItemViewController: UIViewController {
 
 //MARK: - IBActions
 extension AddItemViewController {
+    @IBAction func textFieldChanged(_ sender: UITextField) {
+        validateItem()
+    }
+    
     @IBAction func itemTypeButtonTapped(_ sender: UIButton) {
         updateButtonBorders(selected: sender.tag)
         selectedCategory = sender.tag
