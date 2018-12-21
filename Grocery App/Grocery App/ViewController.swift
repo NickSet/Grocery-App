@@ -51,9 +51,10 @@ class ViewController: UIViewController {
             self.items = newItems
             self.itemsBySection = Dictionary(grouping: self.items) { $0.category }
             for (key, value) in self.itemsBySection {
-                print("\(key) -> \(value)")
+                //print("\(key) -> \(value)")
                 newDataObjects.append(Objects(sectionName: key, sectionItems: value))
             }
+            newDataObjects.sort(by: { $0.sectionName < $1.sectionName })
             self.dataObjects = newDataObjects
             self.itemTableView.reloadData()
         })
@@ -62,15 +63,25 @@ class ViewController: UIViewController {
     
     func toggleCellCheckbox(_ cell: ItemTableViewCell, isCompleted: Bool) {
         if !isCompleted {
+            let currentText = cell.nameLabel.text!
             cell.accessoryType = .none
+            cell.nameLabel.attributedText = nil
+            cell.nameLabel.text = currentText
             cell.nameLabel.textColor = .black
             cell.quantityLabel.textColor = .black
             cell.dateLabel.textColor = .black
+            cell.quantityLabel.isHidden = false
+            cell.dateLabel.isHidden = false
         } else {
+            // TODO: Add guard checks
+            let currentText = cell.nameLabel.text!
+            let strikeThroughText = NSAttributedString(string: currentText, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue])
+            cell.nameLabel.attributedText = strikeThroughText
             cell.accessoryType = .checkmark
             cell.nameLabel.textColor = .gray
-            cell.quantityLabel.textColor = .gray
-            cell.dateLabel.textColor = .gray
+            cell.quantityLabel.isHidden = true
+            cell.dateLabel.isHidden = true
+            
         }
     }
 }
@@ -96,11 +107,10 @@ extension ViewController {
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? ItemTableViewCell else { return }
-        var item = items[indexPath.row]
+        var item = dataObjects[indexPath.section].sectionItems[indexPath.row]
         let toggledCompletion = !item.completed
-        
-        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
         item.completed = toggledCompletion
+        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
         
         item.ref?.updateChildValues([
             "completed": toggledCompletion
@@ -119,7 +129,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        return 55.0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -170,6 +180,7 @@ extension ViewController: UITableViewDataSource {
             let item = dataObjects[indexPath.section].sectionItems[indexPath.row]
             cell.nameLabel.text = item.name
             cell.quantityLabel.text = item.quantity
+            cell.setupDateLabel(stringDate: item.dateAdded)
             toggleCellCheckbox(cell, isCompleted: item.completed)
             return cell
         } else {
