@@ -14,7 +14,8 @@ class AddItemViewController: UIViewController {
     @IBOutlet var quantityTextField: UITextField!
     @IBOutlet var buttonsArray: [UIButton]!
     @IBOutlet var addItemButton: UIButton!
-
+    @IBOutlet var addItemViewBottomConstraint: NSLayoutConstraint!
+    
     var ref: DatabaseReference!
     var sections = ["produce", "meat", "dairy", "nonperishable", "snacks", "frozen", "toiletries"]
     var selectedCategory: Int? {
@@ -31,6 +32,17 @@ class AddItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference(withPath: "items")
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(keyboardWillBeShown(note:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillBeShown(note: Notification) {
+        let userInfo = note.userInfo!
+
+        let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        print(keyboardSize.height)
+        addItemViewBottomConstraint.constant = 0 - keyboardSize.height
+        //self.view.frame.origin.y -= keyboardSize.height
     }
     
     func validateItem() {
@@ -55,10 +67,8 @@ class AddItemViewController: UIViewController {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         if segue.identifier == "SaveItem", let itemName = itemNameTextField.text {
             let date = Date().description
-            print(date)
             let quantity = quantityTextField.text ?? ""
             let category = sections[selectedCategory!]
-            print(category)
             let itemToSave = Item(name: itemName, dateAdded: date, category: category, completed: false, quantity: quantity)
             
             let itemRef = self.ref.child(itemName.lowercased())

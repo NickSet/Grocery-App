@@ -327,6 +327,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="addItemButton" destination="WRx-NB-Vq8" id="r5F-xy-yiO"/>
+                        <outlet property="addItemViewBottomConstraint" destination="prj-wW-XwH" id="mHS-Px-g88"/>
                         <outlet property="itemNameTextField" destination="Kup-RF-Vh8" id="fmi-4s-Kwa"/>
                         <outlet property="quantityTextField" destination="CzB-JN-GN3" id="4Nb-di-hj3"/>
                         <outletCollection property="buttonsArray" destination="HYo-cT-e8e" collectionClass="NSMutableArray" id="Pdb-LZ-qwG"/>
