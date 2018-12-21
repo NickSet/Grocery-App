@@ -123,7 +123,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let item = items[indexPath.row]
+            let item = dataObjects[indexPath.section].sectionItems[indexPath.row]
             item.ref?.removeValue()
         }
     }
