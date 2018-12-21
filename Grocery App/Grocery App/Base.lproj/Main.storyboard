@@ -18,25 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E8h-yr-eRt">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E8h-yr-eRt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="60" id="6aP-B6-WXI" customClass="ItemTableViewCell" customModule="Grocery_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="55" id="6aP-B6-WXI" customClass="ItemTableViewCell" customModule="Grocery_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6aP-B6-WXI" id="4ZN-pH-zWR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date_added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-rZ-tlX">
-                                                    <rect key="frame" x="294" y="23.5" width="66" height="14.5"/>
+                                                    <rect key="frame" x="294" y="20.5" width="66" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hzm-Mj-8kU">
-                                                    <rect key="frame" x="58" y="12.5" width="83" height="35"/>
+                                                <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hzm-Mj-8kU">
+                                                    <rect key="frame" x="31" y="10" width="83" height="35"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="item_name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8V-cl-HMU">
                                                             <rect key="frame" x="0.0" y="0.0" width="83" height="20.5"/>
@@ -52,45 +52,25 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScA-8H-VUp" customClass="M13Checkbox" customModule="Grocery_App" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="12.5" width="35" height="35"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="tintColor" red="0.36078431372549019" green="0.50196078431372548" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="U66-Kl-F8d"/>
-                                                        <constraint firstAttribute="height" constant="35" id="etM-JH-Ho3"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="secondaryTintColor">
-                                                            <color key="value" red="0.93725490196078431" green="0.94509803921568625" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="checkmarkLineWidth">
-                                                            <real key="value" value="2"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="iAi-rZ-tlX" secondAttribute="bottom" constant="11" id="3qb-7S-umj"/>
+                                                <constraint firstItem="hzm-Mj-8kU" firstAttribute="leading" secondItem="4ZN-pH-zWR" secondAttribute="leadingMargin" constant="16" id="4uc-jk-SYK"/>
+                                                <constraint firstItem="iAi-rZ-tlX" firstAttribute="centerY" secondItem="4ZN-pH-zWR" secondAttribute="centerY" id="Bfe-aq-fTU"/>
                                                 <constraint firstItem="hzm-Mj-8kU" firstAttribute="centerY" secondItem="4ZN-pH-zWR" secondAttribute="centerY" id="Gvi-8X-YVO"/>
-                                                <constraint firstItem="ScA-8H-VUp" firstAttribute="centerY" secondItem="4ZN-pH-zWR" secondAttribute="centerY" id="c1X-4C-4al"/>
-                                                <constraint firstItem="hzm-Mj-8kU" firstAttribute="leading" secondItem="ScA-8H-VUp" secondAttribute="trailing" constant="8" id="fol-CZ-mGE"/>
-                                                <constraint firstItem="ScA-8H-VUp" firstAttribute="leading" secondItem="4ZN-pH-zWR" secondAttribute="leadingMargin" id="o7A-nv-dYQ"/>
                                                 <constraint firstItem="iAi-rZ-tlX" firstAttribute="trailing" secondItem="4ZN-pH-zWR" secondAttribute="trailingMargin" id="oor-OB-At4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="checkBox" destination="ScA-8H-VUp" id="3NN-Kq-JDf"/>
                                             <outlet property="dateLabel" destination="iAi-rZ-tlX" id="jC9-Go-f8t"/>
                                             <outlet property="nameLabel" destination="j8V-cl-HMU" id="kK9-LP-ErX"/>
                                             <outlet property="quantityLabel" destination="9gV-3b-7ee" id="5Ie-XD-sAn"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="60" id="Mle-7t-XJC" customClass="HeaderTableViewCell" customModule="Grocery_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="88" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="83" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mle-7t-XJC" id="xA5-wf-qRB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCj-6w-qZh">
@@ -121,12 +101,29 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Dd-AU-QQC">
-                                <rect key="frame" x="160.5" y="621" width="54" height="34"/>
-                                <color key="backgroundColor" red="0.33312780124591923" green="1" blue="0.28947173781682922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Dd-AU-QQC">
+                                <rect key="frame" x="162.5" y="605" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.078431372550000003" green="0.56862745100000001" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="2xq-8M-Or5"/>
+                                    <constraint firstAttribute="height" constant="50" id="HRX-Zy-oIg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Add"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="AddItemButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kKX-yM-3GM"/>
+                                    <action selector="addItemButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="te1-68-82R"/>
+                                    <segue destination="gHj-iT-z5A" kind="presentation" modalPresentationStyle="overCurrentContext" id="Ag8-EU-hvK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -142,6 +139,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="addItemButton" destination="6Dd-AU-QQC" id="ASa-bo-PHv"/>
                         <outlet property="itemTableView" destination="E8h-yr-eRt" id="WlL-0O-tMn"/>
                     </connections>
                 </viewController>
@@ -261,10 +259,31 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldChanged:" destination="gHj-iT-z5A" eventType="editingChanged" id="iOQ-cN-GDa"/>
+                                        </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRx-NB-Vq8">
-                                        <rect key="frame" x="172.5" y="166" width="30" height="30"/>
-                                        <state key="normal" title="Add"/>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRx-NB-Vq8">
+                                        <rect key="frame" x="147.5" y="164" width="80" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Q0i-S9-BZO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Add Item"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="hzn-CG-C8f" kind="unwind" identifier="SaveItem" unwindAction="saveItem:" id="PMm-uz-wlG"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CzB-JN-GN3">
                                         <rect key="frame" x="16" y="125" width="125" height="35"/>
@@ -293,16 +312,21 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.78000000000000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ebk-Pe-dBx" firstAttribute="leading" secondItem="8Vf-zx-yd7" secondAttribute="leading" id="MgJ-k7-Bps"/>
                             <constraint firstItem="ebk-Pe-dBx" firstAttribute="trailing" secondItem="8Vf-zx-yd7" secondAttribute="trailing" id="Ta2-Xr-Lej"/>
                             <constraint firstItem="ebk-Pe-dBx" firstAttribute="bottom" secondItem="8Vf-zx-yd7" secondAttribute="bottom" constant="-216" id="prj-wW-XwH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Vf-zx-yd7"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ksZ-CY-MEH" appends="YES" id="4xy-Tw-doH"/>
+                        </connections>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="200"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="addItemButton" destination="WRx-NB-Vq8" id="r5F-xy-yiO"/>
                         <outlet property="itemNameTextField" destination="Kup-RF-Vh8" id="fmi-4s-Kwa"/>
                         <outlet property="quantityTextField" destination="CzB-JN-GN3" id="4Nb-di-hj3"/>
                         <outletCollection property="buttonsArray" destination="HYo-cT-e8e" collectionClass="NSMutableArray" id="Pdb-LZ-qwG"/>
@@ -315,8 +339,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPb-2j-pZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="hzn-CG-C8f" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="down" id="ksZ-CY-MEH">
+                    <connections>
+                        <segue destination="hzn-CG-C8f" kind="unwind" unwindAction="closeAddItemViewConroller:" id="eZD-NR-G1h"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="880.79999999999995" y="-18.890554722638683"/>
+            <point key="canvasLocation" x="916" y="134"/>
         </scene>
     </scenes>
 </document>

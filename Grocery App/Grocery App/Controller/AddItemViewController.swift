@@ -7,29 +7,64 @@
 //
 
 import UIKit
+import Firebase
 
 class AddItemViewController: UIViewController {
     @IBOutlet var itemNameTextField: UITextField!
     @IBOutlet var quantityTextField: UITextField!
     @IBOutlet var buttonsArray: [UIButton]!
+    @IBOutlet var addItemButton: UIButton!
+
+    var ref: DatabaseReference!
+    var sections = ["produce", "meat", "dairy", "nonperishable", "snacks", "frozen", "toiletries"]
+    var selectedCategory: Int? {
+        didSet {
+            validateItem()
+        }
+    }
+    
+    // TODO: Add smoother transition animation
+    override func viewWillDisappear(_ animated: Bool) {
+        view.backgroundColor = .clear
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        ref = Database.database().reference(withPath: "items")
     }
     
-    /*
+    func validateItem() {
+        guard let _ = selectedCategory, let _ = itemNameTextField.text else {
+            addItemButton.isEnabled = false
+            addItemButton.backgroundColor = .white
+            addItemButton.tintColor = UIColor(displayP3Red: 161.0/255.0, green: 161.0/255.0, blue: 161.0/255.0, alpha: 1.0)
+            return
+        }
+        guard let itemName = itemNameTextField.text, itemName.count > 0 else {
+            addItemButton.isEnabled = false
+            addItemButton.backgroundColor = UIColor.clear
+            addItemButton.tintColor = UIColor(displayP3Red: 161.0/255.0, green: 161.0/255.0, blue: 161.0/255.0, alpha: 1.0)
+            return
+        }
+        addItemButton.backgroundColor = UIColor(displayP3Red: 20.0/255.0, green: 145.0/255.0, blue: 47.0/255.0, alpha: 1.0)
+        addItemButton.tintColor = .white
+        addItemButton.isEnabled = true
+    }
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    @IBAction func itemTypeButtonTapped(_ sender: UIButton) {
-        updateButtonBorders(selected: sender.tag)
-    }
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
+        if segue.identifier == "SaveItem", let itemName = itemNameTextField.text {
+            let date = Date().description
+            print(date)
+            let quantity = quantityTextField.text ?? ""
+            let category = sections[selectedCategory!]
+            print(category)
+            let itemToSave = Item(name: itemName, dateAdded: date, category: category, completed: false, quantity: quantity)
+            
+            let itemRef = self.ref.child(itemName.lowercased())
+            itemRef.setValue(itemToSave.toAnyObject())
+        }
+     }
     
     func updateButtonBorders(selected: Int) {
         for button in buttonsArray {
@@ -39,4 +74,16 @@ class AddItemViewController: UIViewController {
         buttonsArray[selected].layer.borderColor = UIColor.green.cgColor
     }
     
+}
+
+//MARK: - IBActions
+extension AddItemViewController {
+    @IBAction func textFieldChanged(_ sender: UITextField) {
+        validateItem()
+    }
+    
+    @IBAction func itemTypeButtonTapped(_ sender: UIButton) {
+        updateButtonBorders(selected: sender.tag)
+        selectedCategory = sender.tag
+    }
 }

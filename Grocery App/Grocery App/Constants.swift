@@ -15,6 +15,7 @@ struct Constants {
         case meat = "🥩"
         case nonPerishable = "🥫"
         case produce = "🥬"
+        case snacks = "🍪"
         case toiletrie = "🧻"
     }
 }
