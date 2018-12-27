@@ -56,7 +56,8 @@ class ViewController: UIViewController {
             self.itemsBySection = Dictionary(grouping: self.items) { $0.category }
             for (key, value) in self.itemsBySection {
                 //print("\(key) -> \(value)")
-                newDataObjects.append(Objects(sectionName: key, sectionItems: value, selected: true))
+                let sectionShown = UserDefaults.standard.bool(forKey: key)
+                newDataObjects.append(Objects(sectionName: key, sectionItems: value, selected: sectionShown))
             }
             newDataObjects.sort(by: { $0.sectionName < $1.sectionName })
             self.dataObjects = newDataObjects
@@ -98,13 +99,19 @@ class ViewController: UIViewController {
     }
     
     @objc func sectionHeaderWasTouched(_ sender: UITapGestureRecognizer) {
-        guard let headerView = sender.view as? UITableViewCell else {
+        guard let headerView = sender.view as? HeaderTableViewCell else {
             return
         }
-        let section    = headerView.tag
+        let section = headerView.tag
         
-        print("Section \(section) was tapped")
-
+        let sectionTitle = headerView.sectionLabel.text!
+        let sectionShown = UserDefaults.standard.bool(forKey: sectionTitle)
+        if sectionShown {
+            UserDefaults.standard.removeObject(forKey: sectionTitle)
+        } else {
+            UserDefaults.standard.set(true, forKey: sectionTitle)
+        }
+        
         dataObjects[section].selected = !dataObjects[section].selected
         itemTableView.reloadData()
     }
