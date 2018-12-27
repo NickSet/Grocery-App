@@ -62,9 +62,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		01309A3121D53FBB00871281 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				01B09A3A21C4240D009F3F01 /* LaunchScreen.storyboard */,
+				01B09A3521C4240C009F3F01 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		0147F7DE21C99FC600863C89 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				01B09A3321C4240C009F3F01 /* ViewController.swift */,
 				0147F7DF21C99FE300863C89 /* AddItemViewController.swift */,
 			);
 			path = Controller;
@@ -108,15 +118,13 @@
 		01B09A3021C4240C009F3F01 /* Grocery App */ = {
 			isa = PBXGroup;
 			children = (
+				01309A3121D53FBB00871281 /* Storyboards */,
 				0159DFC821CC4A970051A908 /* Extensions */,
 				010CF78A21CABCFA00A49D4F /* Model */,
 				0147F7DE21C99FC600863C89 /* Controller */,
 				0155D54521C47F6200ABDFCB /* View */,
 				01B09A3121C4240C009F3F01 /* AppDelegate.swift */,
-				01B09A3321C4240C009F3F01 /* ViewController.swift */,
-				01B09A3521C4240C009F3F01 /* Main.storyboard */,
 				01B09A3821C4240D009F3F01 /* Assets.xcassets */,
-				01B09A3A21C4240D009F3F01 /* LaunchScreen.storyboard */,
 				01B16AC621CAB827005D7EBA /* GoogleService-Info.plist */,
 				01B09A3D21C4240D009F3F01 /* Info.plist */,
 				01481ABE21C593C8003A8EF7 /* Constants.swift */,
