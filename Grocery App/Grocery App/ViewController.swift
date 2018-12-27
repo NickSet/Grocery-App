@@ -20,6 +20,9 @@ class ViewController: UIViewController {
 
     @IBOutlet var addItemButton: UIButton!
     @IBOutlet var itemTableView: UITableView!
+    @IBOutlet var loadingActivityView: UIActivityIndicatorView!
+    @IBOutlet var noItemsView: UIView!
+    
     
     var ref: DatabaseReference!
     var items: [Item] = []
@@ -56,7 +59,15 @@ class ViewController: UIViewController {
             }
             newDataObjects.sort(by: { $0.sectionName < $1.sectionName })
             self.dataObjects = newDataObjects
-            self.itemTableView.reloadData()
+            
+            if newDataObjects.isEmpty {
+                self.noItemsView.isHidden = false
+                self.loadingActivityView.stopAnimating()
+            } else {
+                self.noItemsView.isHidden = true
+                self.itemTableView.reloadData()
+                self.loadingActivityView.stopAnimating()
+            }
         })
         self.itemTableView.reloadData()
     }
@@ -89,7 +100,7 @@ class ViewController: UIViewController {
 // MARK: - IBActions
 extension ViewController {
     @IBAction func addItemButtonTapped(_ sender: UIButton) {
-        addItemButton.isHidden = true
+        sender.isHidden = true
     }
     
     @IBAction func saveItem(_ segue: UIStoryboardSegue) {

@@ -24,7 +24,6 @@ class ItemTableViewCell: UITableViewCell {
     }
     
     func setupDateLabel(stringDate: String) {
-        print(stringDate)
         let dF = DateFormatter()
         dF.timeZone = NSTimeZone.default
         dF.dateFormat =  "yyyy-MM-dd HH:mm:ss Z"
