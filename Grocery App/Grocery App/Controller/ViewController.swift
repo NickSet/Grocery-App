@@ -12,6 +12,7 @@ import Firebase
 private struct Objects {
     var sectionName: String!
     var sectionItems: [Item]!
+    var selected: Bool!
 }
 
 class ViewController: UIViewController {
@@ -55,7 +56,7 @@ class ViewController: UIViewController {
             self.itemsBySection = Dictionary(grouping: self.items) { $0.category }
             for (key, value) in self.itemsBySection {
                 //print("\(key) -> \(value)")
-                newDataObjects.append(Objects(sectionName: key, sectionItems: value))
+                newDataObjects.append(Objects(sectionName: key, sectionItems: value, selected: true))
             }
             newDataObjects.sort(by: { $0.sectionName < $1.sectionName })
             self.dataObjects = newDataObjects
@@ -95,6 +96,18 @@ class ViewController: UIViewController {
             
         }
     }
+    
+    @objc func sectionHeaderWasTouched(_ sender: UITapGestureRecognizer) {
+        guard let headerView = sender.view as? UITableViewCell else {
+            return
+        }
+        let section    = headerView.tag
+        
+        print("Section \(section) was tapped")
+
+        dataObjects[section].selected = !dataObjects[section].selected
+        itemTableView.reloadData()
+    }
 }
 
 // MARK: - IBActions
@@ -117,6 +130,9 @@ extension ViewController {
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        
         guard let cell = tableView.cellForRow(at: indexPath) as? ItemTableViewCell else { return }
         var item = dataObjects[indexPath.section].sectionItems[indexPath.row]
         let toggledCompletion = !item.completed
@@ -175,6 +191,10 @@ extension ViewController: UITableViewDataSource {
             default:
                 break
             }
+            headerCell.tag = section
+            let headerTapGesture = UITapGestureRecognizer()
+            headerTapGesture.addTarget(self, action: #selector(ViewController.sectionHeaderWasTouched(_:)))
+            headerCell.addGestureRecognizer(headerTapGesture)
             return headerCell
         } else {
             return UIView()
@@ -182,8 +202,10 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataObjects[section].sectionItems.count
-
+        if dataObjects[section].selected == true {
+            return dataObjects[section].sectionItems.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
