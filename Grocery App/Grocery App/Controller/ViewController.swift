@@ -13,17 +13,25 @@ private struct Objects {
     var sectionName: String!
     var sectionItems: [Item]!
     var selected: Bool!
+    
+    func getCheckedItems() -> [Item] {
+        var result = [Item]()
+        for item in sectionItems {
+            if item.completed {
+                result.append(item)
+            }
+        }
+        return result
+    }
 }
 
 class ViewController: UIViewController {
     
     
 
-    @IBOutlet var addItemButton: UIButton!
     @IBOutlet var itemTableView: UITableView!
     @IBOutlet var loadingActivityView: UIActivityIndicatorView!
-    @IBOutlet var noItemsView: UIView!
-    
+    @IBOutlet var noItemsLabel: UILabel!
     
     var ref: DatabaseReference!
     var items: [Item] = []
@@ -63,10 +71,10 @@ class ViewController: UIViewController {
             self.dataObjects = newDataObjects
             
             if newDataObjects.isEmpty {
-                self.noItemsView.isHidden = false
+                self.noItemsLabel.isHidden = false
                 self.loadingActivityView.stopAnimating()
             } else {
-                self.noItemsView.isHidden = true
+                self.noItemsLabel.isHidden = true
                 self.itemTableView.reloadData()
                 self.loadingActivityView.stopAnimating()
             }
@@ -119,27 +127,28 @@ class ViewController: UIViewController {
 
 // MARK: - IBActions
 extension ViewController {
-    @IBAction func addItemButtonTapped(_ sender: UIButton) {
-        sender.isHidden = true
-    }
-    
     @IBAction func saveItem(_ segue: UIStoryboardSegue) {
-        addItemButton.isHidden = false
         print("Back in ViewController")
     }
     
     @IBAction func closeAddItemViewConroller(_ segue: UIStoryboardSegue) {
-        addItemButton.isHidden = false
         print("Back in ViewController")
+    }
+    
+    @IBAction func clearItemsButonClicked(_ sender: UIBarButtonItem) {
+        print("Clear items clicked")
+        for section in dataObjects {
+            let sectionsCheckedItems = section.getCheckedItems()
+            for checkedItem in sectionsCheckedItems {
+                checkedItem.ref?.removeValue()
+            }
+        }
     }
 }
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-        
         guard let cell = tableView.cellForRow(at: indexPath) as? ItemTableViewCell else { return }
         var item = dataObjects[indexPath.section].sectionItems[indexPath.row]
         let toggledCompletion = !item.completed

@@ -34,13 +34,14 @@ class AddItemViewController: UIViewController {
         ref = Database.database().reference(withPath: "items")
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(keyboardWillBeShown(note:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        self.itemNameTextField.becomeFirstResponder()
+        view.backgroundColor = UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 0.7)
     }
     
     @objc func keyboardWillBeShown(note: Notification) {
         let userInfo = note.userInfo!
 
         let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        print(keyboardSize.height)
         addItemViewBottomConstraint.constant = 0 - keyboardSize.height
         //self.view.frame.origin.y -= keyboardSize.height
     }
@@ -65,6 +66,7 @@ class AddItemViewController: UIViewController {
     
     // MARK: - Navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
+        view.endEditing(true)
         if segue.identifier == "SaveItem", let itemName = itemNameTextField.text {
             let date = Date().description
             let quantity = quantityTextField.text ?? ""
