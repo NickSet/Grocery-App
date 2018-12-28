@@ -13,6 +13,16 @@ private struct Objects {
     var sectionName: String!
     var sectionItems: [Item]!
     var selected: Bool!
+    
+    func getCheckedItems() -> [Item] {
+        var result = [Item]()
+        for item in sectionItems {
+            if item.completed {
+                result.append(item)
+            }
+        }
+        return result
+    }
 }
 
 class ViewController: UIViewController {
@@ -127,8 +137,13 @@ extension ViewController {
     
     @IBAction func clearItemsButonClicked(_ sender: UIBarButtonItem) {
         print("Clear items clicked")
+        for section in dataObjects {
+            let sectionsCheckedItems = section.getCheckedItems()
+            for checkedItem in sectionsCheckedItems {
+                checkedItem.ref?.removeValue()
+            }
+        }
     }
-    
 }
 
 // MARK: - UITableViewDataSource
