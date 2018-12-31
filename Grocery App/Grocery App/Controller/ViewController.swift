@@ -12,17 +12,26 @@ import Firebase
 private struct Objects {
     var sectionName: String!
     var sectionItems: [Item]!
+    var selected: Bool!
+    
+    func getCheckedItems() -> [Item] {
+        var result = [Item]()
+        for item in sectionItems {
+            if item.completed {
+                result.append(item)
+            }
+        }
+        return result
+    }
 }
 
 class ViewController: UIViewController {
     
     
 
-    @IBOutlet var addItemButton: UIButton!
     @IBOutlet var itemTableView: UITableView!
     @IBOutlet var loadingActivityView: UIActivityIndicatorView!
-    @IBOutlet var noItemsView: UIView!
-    
+    @IBOutlet var noItemsLabel: UILabel!
     
     var ref: DatabaseReference!
     var items: [Item] = []
@@ -55,16 +64,19 @@ class ViewController: UIViewController {
             self.itemsBySection = Dictionary(grouping: self.items) { $0.category }
             for (key, value) in self.itemsBySection {
                 //print("\(key) -> \(value)")
-                newDataObjects.append(Objects(sectionName: key, sectionItems: value))
+                let sectionShown = UserDefaults.standard.bool(forKey: key)
+                newDataObjects.append(Objects(sectionName: key, sectionItems: value, selected: sectionShown))
             }
             newDataObjects.sort(by: { $0.sectionName < $1.sectionName })
             self.dataObjects = newDataObjects
             
             if newDataObjects.isEmpty {
-                self.noItemsView.isHidden = false
+                self.itemTableView.isHidden = true
+                self.noItemsLabel.isHidden = false
                 self.loadingActivityView.stopAnimating()
             } else {
-                self.noItemsView.isHidden = true
+                self.itemTableView.isHidden = false
+                self.noItemsLabel.isHidden = true
                 self.itemTableView.reloadData()
                 self.loadingActivityView.stopAnimating()
             }
@@ -95,22 +107,44 @@ class ViewController: UIViewController {
             
         }
     }
+    
+    @objc func sectionHeaderWasTouched(_ sender: UITapGestureRecognizer) {
+        guard let headerView = sender.view as? HeaderTableViewCell else {
+            return
+        }
+        let section = headerView.tag
+        
+        let sectionTitle = headerView.sectionLabel.text!
+        let sectionShown = UserDefaults.standard.bool(forKey: sectionTitle)
+        if sectionShown {
+            UserDefaults.standard.removeObject(forKey: sectionTitle)
+        } else {
+            UserDefaults.standard.set(true, forKey: sectionTitle)
+        }
+        
+        dataObjects[section].selected = !dataObjects[section].selected
+        itemTableView.reloadData()
+    }
 }
 
 // MARK: - IBActions
 extension ViewController {
-    @IBAction func addItemButtonTapped(_ sender: UIButton) {
-        sender.isHidden = true
-    }
-    
     @IBAction func saveItem(_ segue: UIStoryboardSegue) {
-        addItemButton.isHidden = false
         print("Back in ViewController")
     }
     
     @IBAction func closeAddItemViewConroller(_ segue: UIStoryboardSegue) {
-        addItemButton.isHidden = false
         print("Back in ViewController")
+    }
+    
+    @IBAction func clearItemsButonClicked(_ sender: UIBarButtonItem) {
+        print("Clear items clicked")
+        for section in dataObjects {
+            let sectionsCheckedItems = section.getCheckedItems()
+            for checkedItem in sectionsCheckedItems {
+                checkedItem.ref?.removeValue()
+            }
+        }
     }
 }
 
@@ -175,6 +209,10 @@ extension ViewController: UITableViewDataSource {
             default:
                 break
             }
+            headerCell.tag = section
+            let headerTapGesture = UITapGestureRecognizer()
+            headerTapGesture.addTarget(self, action: #selector(ViewController.sectionHeaderWasTouched(_:)))
+            headerCell.addGestureRecognizer(headerTapGesture)
             return headerCell
         } else {
             return UIView()
@@ -182,8 +220,10 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataObjects[section].sectionItems.count
-
+        if dataObjects[section].selected == true {
+            return dataObjects[section].sectionItems.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
