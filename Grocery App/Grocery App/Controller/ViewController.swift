@@ -71,9 +71,11 @@ class ViewController: UIViewController {
             self.dataObjects = newDataObjects
             
             if newDataObjects.isEmpty {
+                self.itemTableView.isHidden = true
                 self.noItemsLabel.isHidden = false
                 self.loadingActivityView.stopAnimating()
             } else {
+                self.itemTableView.isHidden = false
                 self.noItemsLabel.isHidden = true
                 self.itemTableView.reloadData()
                 self.loadingActivityView.stopAnimating()
