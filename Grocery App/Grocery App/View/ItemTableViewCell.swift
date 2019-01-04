@@ -30,15 +30,15 @@ class ItemTableViewCell: UITableViewCell {
         
         if let date = dF.date(from: stringDate) {
             let currentDate = Date()
-            let currentComponents = NSCalendar.current.dateComponents(in: NSTimeZone.default, from: currentDate)
-            let dateComponents = NSCalendar.current.dateComponents(in: NSTimeZone.default, from: date)
-            let differenceInDays = currentComponents.day! - dateComponents.day!
-            if differenceInDays == 0 {
+            
+            let components = Calendar.current.dateComponents([.day], from: date, to: currentDate)
+            
+            if components.day == 0 {
                 dateLabel.text = "Added today"
-            } else if differenceInDays == 1{
-                dateLabel.text = "Added \(differenceInDays) day ago"
+            } else if components.day == 1{
+                dateLabel.text = "Added \(components.day!) day ago"
             } else {
-                dateLabel.text = "Added \(differenceInDays) days ago"
+            dateLabel.text = "Added \(components.day!) days ago"
             }
 
         }
