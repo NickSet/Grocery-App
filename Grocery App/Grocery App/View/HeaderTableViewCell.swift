@@ -11,6 +11,7 @@ import UIKit
 class HeaderTableViewCell: UITableViewCell {
     @IBOutlet var emojiLabel: UILabel!
     @IBOutlet var sectionLabel: UILabel!
+    @IBOutlet var chevronImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
