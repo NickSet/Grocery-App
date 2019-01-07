@@ -217,6 +217,11 @@ extension ViewController: UITableViewDataSource {
                 headerCell.rotateChevron()
             }
             
+            let totalItems = dataObjects[section].sectionItems.count
+            let selectedItems = dataObjects[section].sectionItems.filter{ $0.completed}.count
+
+            headerCell.countLabel.text = "\(selectedItems) / \(totalItems)"
+            
             headerCell.tag = section
             let headerTapGesture = UITapGestureRecognizer()
             headerTapGesture.addTarget(self, action: #selector(ViewController.sectionHeaderWasTouched(_:)))
