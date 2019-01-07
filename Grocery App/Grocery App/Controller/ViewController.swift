@@ -184,7 +184,8 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as? HeaderTableViewCell {
             headerCell.sectionLabel.text = dataObjects[section].sectionName
-            switch dataObjects[section].sectionName {
+            let sectionTitle = dataObjects[section].sectionName as String
+            switch sectionTitle {
             case "dairy":
                 headerCell.emojiLabel.text = "🧀"
                 break
@@ -209,6 +210,13 @@ extension ViewController: UITableViewDataSource {
             default:
                 break
             }
+            
+            let sectionShown = UserDefaults.standard.bool(forKey: sectionTitle)
+            
+            if !sectionShown {
+                headerCell.rotateChevron()
+            }
+            
             headerCell.tag = section
             let headerTapGesture = UITapGestureRecognizer()
             headerTapGesture.addTarget(self, action: #selector(ViewController.sectionHeaderWasTouched(_:)))

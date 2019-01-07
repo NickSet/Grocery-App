@@ -23,5 +23,10 @@ class HeaderTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func rotateChevron() {
+        let rotationAngle = CGFloat(Double.pi)
+        self.chevronImage.transform = CGAffineTransform(rotationAngle: rotationAngle)
+    }
 
 }
