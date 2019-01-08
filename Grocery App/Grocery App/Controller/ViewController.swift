@@ -129,15 +129,12 @@ class ViewController: UIViewController {
 // MARK: - IBActions
 extension ViewController {
     @IBAction func saveItem(_ segue: UIStoryboardSegue) {
-        print("Back in ViewController")
     }
     
     @IBAction func closeAddItemViewConroller(_ segue: UIStoryboardSegue) {
-        print("Back in ViewController")
     }
     
     @IBAction func clearItemsButonClicked(_ sender: UIBarButtonItem) {
-        print("Clear items clicked")
         var itemsToDelete: [String: Any] = [:]
 
         for section in dataObjects {
