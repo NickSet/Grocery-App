@@ -27,8 +27,6 @@ private struct Objects {
 
 class ViewController: UIViewController {
     
-    
-
     @IBOutlet var itemTableView: UITableView!
     @IBOutlet var loadingActivityView: UIActivityIndicatorView!
     @IBOutlet var noItemsLabel: UILabel!
@@ -104,7 +102,6 @@ class ViewController: UIViewController {
             cell.nameLabel.textColor = .gray
             cell.quantityLabel.isHidden = true
             cell.dateLabel.isHidden = true
-            
         }
     }
     
@@ -174,7 +171,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55.0
+        return 46.0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -213,7 +210,7 @@ extension ViewController: UITableViewDataSource {
             
             let sectionShown = UserDefaults.standard.bool(forKey: sectionTitle)
             
-            if !sectionShown {
+            if sectionShown {
                 headerCell.rotateChevron()
             }
             
