@@ -20,7 +20,7 @@ class AddItemViewController: UIViewController {
     var sections = ["drinks", "snacks", "pharmacy",  "toiletries", "nonperishable", "produce", "meat", "dairy", "bread", "frozen"]
     var selectedCategory: Int? {
         didSet {
-            validateItem()
+            _ = validateItem()
         }
     }
     
@@ -76,7 +76,7 @@ class AddItemViewController: UIViewController {
             let category = sections[selectedCategory!]
             let itemToSave = Item(name: itemName, dateAdded: date, category: category, completed: false, quantity: quantity)
             
-            let itemRef = self.ref.child(itemName.lowercased())
+            let itemRef = self.ref.child(itemName)
             itemRef.setValue(itemToSave.toAnyObject())
         }
      }
@@ -95,7 +95,7 @@ class AddItemViewController: UIViewController {
 //MARK: - IBActions
 extension AddItemViewController {
     @IBAction func textFieldChanged(_ sender: UITextField) {
-        validateItem()
+        _ = validateItem()
     }
     
     @IBAction func itemTypeButtonTapped(_ sender: UIButton) {

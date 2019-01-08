@@ -138,12 +138,17 @@ extension ViewController {
     
     @IBAction func clearItemsButonClicked(_ sender: UIBarButtonItem) {
         print("Clear items clicked")
+        var itemsToDelete: [String: Any] = [:]
+
         for section in dataObjects {
             let sectionsCheckedItems = section.getCheckedItems()
             for checkedItem in sectionsCheckedItems {
-                checkedItem.ref?.removeValue()
+                print(checkedItem.name)
+                itemsToDelete[checkedItem.name] = NSNull()
+                //checkedItem.ref?.removeValue()
             }
         }
+        ref.updateChildValues(itemsToDelete)
     }
 }
 
