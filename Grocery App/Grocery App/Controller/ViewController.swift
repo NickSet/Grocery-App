@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         // TODO: Look into a more elegant way to achieve this
         ref = Database.database().reference(withPath: "items")
         
-        ref.observe(.value, with: { snapshot in
+        ref.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
             
             var newItems: [Item] = []
             var newDataObjects: [Objects] = []
@@ -66,6 +66,8 @@ class ViewController: UIViewController {
                 newDataObjects.append(Objects(sectionName: key, sectionItems: value, selected: sectionShown))
             }
             newDataObjects.sort(by: { $0.sectionName < $1.sectionName })
+            
+            
             self.dataObjects = newDataObjects
             
             if newDataObjects.isEmpty {
