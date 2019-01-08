@@ -27,8 +27,6 @@ private struct Objects {
 
 class ViewController: UIViewController {
     
-    
-
     @IBOutlet var itemTableView: UITableView!
     @IBOutlet var loadingActivityView: UIActivityIndicatorView!
     @IBOutlet var noItemsLabel: UILabel!
@@ -48,7 +46,7 @@ class ViewController: UIViewController {
         // TODO: Look into a more elegant way to achieve this
         ref = Database.database().reference(withPath: "items")
         
-        ref.observe(.value, with: { snapshot in
+        ref.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
             
             var newItems: [Item] = []
             var newDataObjects: [Objects] = []
@@ -68,6 +66,8 @@ class ViewController: UIViewController {
                 newDataObjects.append(Objects(sectionName: key, sectionItems: value, selected: sectionShown))
             }
             newDataObjects.sort(by: { $0.sectionName < $1.sectionName })
+            
+            
             self.dataObjects = newDataObjects
             
             if newDataObjects.isEmpty {
@@ -104,7 +104,6 @@ class ViewController: UIViewController {
             cell.nameLabel.textColor = .gray
             cell.quantityLabel.isHidden = true
             cell.dateLabel.isHidden = true
-            
         }
     }
     
@@ -174,7 +173,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55.0
+        return 46.0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -184,7 +183,8 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as? HeaderTableViewCell {
             headerCell.sectionLabel.text = dataObjects[section].sectionName
-            switch dataObjects[section].sectionName {
+            let sectionTitle = dataObjects[section].sectionName as String
+            switch sectionTitle {
             case "dairy":
                 headerCell.emojiLabel.text = "🧀"
                 break
@@ -209,6 +209,18 @@ extension ViewController: UITableViewDataSource {
             default:
                 break
             }
+            
+            let sectionShown = UserDefaults.standard.bool(forKey: sectionTitle)
+            
+            if sectionShown {
+                headerCell.rotateChevron()
+            }
+            
+            let totalItems = dataObjects[section].sectionItems.count
+            let selectedItems = dataObjects[section].sectionItems.filter{ $0.completed}.count
+
+            headerCell.countLabel.text = "\(selectedItems) / \(totalItems)"
+            
             headerCell.tag = section
             let headerTapGesture = UITapGestureRecognizer()
             headerTapGesture.addTarget(self, action: #selector(ViewController.sectionHeaderWasTouched(_:)))
