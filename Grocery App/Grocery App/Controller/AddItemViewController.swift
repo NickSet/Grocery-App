@@ -17,7 +17,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet var addItemViewBottomConstraint: NSLayoutConstraint!
     
     var ref: DatabaseReference!
-    var sections = ["produce", "meat", "dairy", "nonperishable", "snacks", "frozen", "toiletries"]
+    var sections = ["drinks", "snacks", "pharmacy",  "toiletries", "nonperishable", "produce", "meat", "dairy", "bread", "frozen"]
     var selectedCategory: Int? {
         didSet {
             validateItem()
@@ -79,6 +79,7 @@ class AddItemViewController: UIViewController {
      }
     
     func updateButtonBorders(selected: Int) {
+        print("Selected: \(sections[selected])")
         for button in buttonsArray {
             button.layer.borderColor = UIColor.clear.cgColor
             button.layer.borderWidth = 4.0

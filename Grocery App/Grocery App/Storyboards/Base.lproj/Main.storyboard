@@ -185,102 +185,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebk-Pe-dBx">
-                                <rect key="frame" x="0.0" y="251" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="262" width="375" height="235"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="anl-d1-gCt">
-                                        <rect key="frame" x="6.5" y="20" width="362" height="50"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYo-cT-e8e">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="0Qx-bx-NV1"/>
-                                                    <constraint firstAttribute="height" constant="50" id="iXT-UT-8wK"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                                <state key="normal" title="🥬"/>
-                                                <connections>
-                                                    <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="qsb-qi-3aO"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NB-sO-dY0">
-                                                <rect key="frame" x="52" y="0.0" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="QNF-ac-eIK"/>
-                                                    <constraint firstAttribute="height" constant="50" id="oCH-p4-Bbf"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                                <state key="normal" title="🥩"/>
-                                                <connections>
-                                                    <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="Eri-Ih-nFm"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0A9-uA-vES">
-                                                <rect key="frame" x="104" y="0.0" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="ZLj-xl-DFm"/>
-                                                    <constraint firstAttribute="height" constant="50" id="fx3-hs-NB0"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                                <state key="normal" title="🧀"/>
-                                                <connections>
-                                                    <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="ysp-am-nQW"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgr-9N-g8m">
-                                                <rect key="frame" x="156" y="0.0" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="dhY-0A-ZH0"/>
-                                                    <constraint firstAttribute="height" constant="50" id="tPe-Xm-sKD"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                                <state key="normal" title="🥫"/>
-                                                <connections>
-                                                    <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="Izz-Po-fOL"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7T7-dp-rFs">
-                                                <rect key="frame" x="208" y="0.0" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="G1i-xA-CPQ"/>
-                                                    <constraint firstAttribute="height" constant="50" id="XV9-GI-bkG"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                                <state key="normal" title="🍪"/>
-                                                <connections>
-                                                    <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="kSy-aX-RDt"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdG-2a-scx">
-                                                <rect key="frame" x="260" y="0.0" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="DR0-N2-f3O"/>
-                                                    <constraint firstAttribute="width" constant="50" id="F6Z-wU-0KP"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                                <state key="normal" title="❄️"/>
-                                                <connections>
-                                                    <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="KSE-io-hnS"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2d-7J-J2z">
-                                                <rect key="frame" x="312" y="0.0" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="cCE-Oe-uHp"/>
-                                                    <constraint firstAttribute="height" constant="50" id="xvb-4R-Y4g"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                                <state key="normal" title="🧻"/>
-                                                <connections>
-                                                    <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="pir-sJ-IaS"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="rOe-yL-yfC"/>
-                                        </constraints>
-                                    </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kup-RF-Vh8">
-                                        <rect key="frame" x="16" y="82" width="343" height="35"/>
+                                        <rect key="frame" x="16" y="118" width="343" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="lDF-nR-RLC"/>
                                         </constraints>
@@ -292,7 +200,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRx-NB-Vq8">
-                                        <rect key="frame" x="147.5" y="164" width="80" height="32"/>
+                                        <rect key="frame" x="147.5" y="195" width="80" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="Q0i-S9-BZO"/>
                                         </constraints>
@@ -314,7 +222,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CzB-JN-GN3">
-                                        <rect key="frame" x="16" y="125" width="125" height="35"/>
+                                        <rect key="frame" x="16" y="161" width="125" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="fbS-eq-aeb"/>
                                             <constraint firstAttribute="width" constant="125" id="h7p-v7-eBE"/>
@@ -323,19 +231,144 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qrb-a0-huk">
+                                        <rect key="frame" x="54.5" y="8" width="266" height="102"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Prl-o2-fG1">
+                                                <rect key="frame" x="0.0" y="0.0" width="266" height="51"/>
+                                                <subviews>
+                                                    <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOO-53-Fc5">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="YH4-g4-WMR"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <state key="normal" title="🥤"/>
+                                                        <connections>
+                                                            <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="DLY-al-AK2"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7T7-dp-rFs">
+                                                        <rect key="frame" x="54" y="0.0" width="50" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="wSE-kk-9c3"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <state key="normal" title="🍪"/>
+                                                        <connections>
+                                                            <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="kSy-aX-RDt"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GG-0H-pXQ">
+                                                        <rect key="frame" x="108" y="0.0" width="50" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="fws-1y-KFN"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <state key="normal" title="💊"/>
+                                                        <connections>
+                                                            <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="6dp-T8-LnV"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2d-7J-J2z">
+                                                        <rect key="frame" x="162" y="0.0" width="50" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="Eju-9b-RmM"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <state key="normal" title="🧻"/>
+                                                        <connections>
+                                                            <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="pir-sJ-IaS"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgr-9N-g8m">
+                                                        <rect key="frame" x="216" y="0.0" width="50" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="bPK-rY-Jhw"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <state key="normal" title="🥫"/>
+                                                        <connections>
+                                                            <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="Izz-Po-fOL"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="anl-d1-gCt">
+                                                <rect key="frame" x="0.0" y="51" width="266" height="51"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYo-cT-e8e">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="iEN-RT-ig6"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <state key="normal" title="🥬"/>
+                                                        <connections>
+                                                            <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="qsb-qi-3aO"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NB-sO-dY0">
+                                                        <rect key="frame" x="54" y="0.0" width="50" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="mbP-Xu-XNs"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <state key="normal" title="🥩"/>
+                                                        <connections>
+                                                            <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="Eri-Ih-nFm"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0A9-uA-vES">
+                                                        <rect key="frame" x="108" y="0.0" width="50" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="mAV-V4-cB0"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <state key="normal" title="🧀"/>
+                                                        <connections>
+                                                            <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="ysp-am-nQW"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVv-5u-CxY">
+                                                        <rect key="frame" x="162" y="0.0" width="50" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="3KI-gU-iQK"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <state key="normal" title="🍞"/>
+                                                        <connections>
+                                                            <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="kGZ-xk-KC3"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdG-2a-scx">
+                                                        <rect key="frame" x="216" y="0.0" width="50" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="QcW-6I-d1F"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <state key="normal" title="❄️"/>
+                                                        <connections>
+                                                            <action selector="itemTypeButtonTapped:" destination="gHj-iT-z5A" eventType="touchUpInside" id="KSE-io-hnS"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Kup-RF-Vh8" firstAttribute="leading" secondItem="ebk-Pe-dBx" secondAttribute="leading" constant="16" id="FC6-PV-vPB"/>
                                     <constraint firstItem="CzB-JN-GN3" firstAttribute="top" secondItem="Kup-RF-Vh8" secondAttribute="bottom" constant="8" id="G9s-Pq-Pjl"/>
-                                    <constraint firstItem="Kup-RF-Vh8" firstAttribute="top" secondItem="anl-d1-gCt" secondAttribute="bottom" constant="12" id="GIq-hA-hkf"/>
-                                    <constraint firstItem="anl-d1-gCt" firstAttribute="centerX" secondItem="ebk-Pe-dBx" secondAttribute="centerX" id="S5W-GD-blJ"/>
                                     <constraint firstItem="WRx-NB-Vq8" firstAttribute="centerX" secondItem="ebk-Pe-dBx" secondAttribute="centerX" id="W6W-fi-kwK"/>
+                                    <constraint firstItem="WRx-NB-Vq8" firstAttribute="top" secondItem="Qrb-a0-huk" secondAttribute="bottom" constant="85" id="WbH-4p-6bS"/>
+                                    <constraint firstItem="Qrb-a0-huk" firstAttribute="centerX" secondItem="ebk-Pe-dBx" secondAttribute="centerX" id="YQ9-iV-0yf"/>
+                                    <constraint firstItem="Kup-RF-Vh8" firstAttribute="top" secondItem="Qrb-a0-huk" secondAttribute="bottom" constant="8" id="Yzw-BG-OiE"/>
                                     <constraint firstAttribute="trailing" secondItem="Kup-RF-Vh8" secondAttribute="trailing" constant="16" id="ZYW-Jw-MZh"/>
                                     <constraint firstItem="CzB-JN-GN3" firstAttribute="leading" secondItem="ebk-Pe-dBx" secondAttribute="leading" constant="16" id="bX6-gT-3Xa"/>
-                                    <constraint firstItem="anl-d1-gCt" firstAttribute="top" secondItem="ebk-Pe-dBx" secondAttribute="top" constant="20" id="gED-Hu-E2v"/>
-                                    <constraint firstAttribute="height" constant="200" id="hzw-Sz-2Sj"/>
-                                    <constraint firstAttribute="bottom" secondItem="WRx-NB-Vq8" secondAttribute="bottom" constant="4" id="o6h-yF-8s6"/>
+                                    <constraint firstItem="Qrb-a0-huk" firstAttribute="top" secondItem="ebk-Pe-dBx" secondAttribute="top" constant="8" id="cUl-nO-Vmv"/>
+                                    <constraint firstAttribute="bottom" secondItem="WRx-NB-Vq8" secondAttribute="bottom" constant="8" id="o6h-yF-8s6"/>
                                     <constraint firstAttribute="width" constant="375" id="qIk-lK-Wv8"/>
                                 </constraints>
                             </view>
@@ -345,7 +378,7 @@
                         <constraints>
                             <constraint firstItem="ebk-Pe-dBx" firstAttribute="leading" secondItem="8Vf-zx-yd7" secondAttribute="leading" id="MgJ-k7-Bps"/>
                             <constraint firstItem="ebk-Pe-dBx" firstAttribute="trailing" secondItem="8Vf-zx-yd7" secondAttribute="trailing" id="Ta2-Xr-Lej"/>
-                            <constraint firstItem="ebk-Pe-dBx" firstAttribute="bottom" secondItem="8Vf-zx-yd7" secondAttribute="bottom" constant="-216" id="prj-wW-XwH"/>
+                            <constraint firstItem="ebk-Pe-dBx" firstAttribute="bottom" secondItem="8Vf-zx-yd7" secondAttribute="bottom" constant="-170" id="prj-wW-XwH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Vf-zx-yd7"/>
                         <connections>
@@ -359,13 +392,16 @@
                         <outlet property="addItemViewBottomConstraint" destination="prj-wW-XwH" id="mHS-Px-g88"/>
                         <outlet property="itemNameTextField" destination="Kup-RF-Vh8" id="fmi-4s-Kwa"/>
                         <outlet property="quantityTextField" destination="CzB-JN-GN3" id="4Nb-di-hj3"/>
-                        <outletCollection property="buttonsArray" destination="HYo-cT-e8e" collectionClass="NSMutableArray" id="Pdb-LZ-qwG"/>
-                        <outletCollection property="buttonsArray" destination="7NB-sO-dY0" collectionClass="NSMutableArray" id="x9r-oy-xUb"/>
-                        <outletCollection property="buttonsArray" destination="0A9-uA-vES" collectionClass="NSMutableArray" id="CWN-Um-qFV"/>
-                        <outletCollection property="buttonsArray" destination="zgr-9N-g8m" collectionClass="NSMutableArray" id="87B-Ps-mPy"/>
-                        <outletCollection property="buttonsArray" destination="7T7-dp-rFs" collectionClass="NSMutableArray" id="wcR-fv-92G"/>
-                        <outletCollection property="buttonsArray" destination="MdG-2a-scx" collectionClass="NSMutableArray" id="8cj-FX-BvX"/>
-                        <outletCollection property="buttonsArray" destination="v2d-7J-J2z" collectionClass="NSMutableArray" id="woV-Yq-OI3"/>
+                        <outletCollection property="buttonsArray" destination="rOO-53-Fc5" collectionClass="NSMutableArray" id="TMR-Ju-Yp1"/>
+                        <outletCollection property="buttonsArray" destination="7T7-dp-rFs" collectionClass="NSMutableArray" id="pfS-62-pcq"/>
+                        <outletCollection property="buttonsArray" destination="6GG-0H-pXQ" collectionClass="NSMutableArray" id="4ho-lZ-8Ux"/>
+                        <outletCollection property="buttonsArray" destination="v2d-7J-J2z" collectionClass="NSMutableArray" id="S5H-21-meK"/>
+                        <outletCollection property="buttonsArray" destination="zgr-9N-g8m" collectionClass="NSMutableArray" id="hFq-dM-5aG"/>
+                        <outletCollection property="buttonsArray" destination="HYo-cT-e8e" collectionClass="NSMutableArray" id="oce-Ai-Jnh"/>
+                        <outletCollection property="buttonsArray" destination="7NB-sO-dY0" collectionClass="NSMutableArray" id="2el-ne-tSz"/>
+                        <outletCollection property="buttonsArray" destination="0A9-uA-vES" collectionClass="NSMutableArray" id="UE4-hN-dV0"/>
+                        <outletCollection property="buttonsArray" destination="SVv-5u-CxY" collectionClass="NSMutableArray" id="6Cq-KY-q6K"/>
+                        <outletCollection property="buttonsArray" destination="MdG-2a-scx" collectionClass="NSMutableArray" id="npn-Uk-LqA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPb-2j-pZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -376,7 +412,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="916" y="134"/>
+            <point key="canvasLocation" x="916" y="133.5832083958021"/>
         </scene>
     </scenes>
     <resources>

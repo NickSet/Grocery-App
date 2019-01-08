@@ -185,6 +185,15 @@ extension ViewController: UITableViewDataSource {
             headerCell.sectionLabel.text = dataObjects[section].sectionName
             let sectionTitle = dataObjects[section].sectionName as String
             switch sectionTitle {
+            case "drinks":
+                headerCell.emojiLabel.text = "🥤"
+                break
+            case "bread":
+                headerCell.emojiLabel.text = "🍞"
+                break
+            case "pharmacy":
+                headerCell.emojiLabel.text = "💊"
+                break
             case "dairy":
                 headerCell.emojiLabel.text = "🧀"
                 break
