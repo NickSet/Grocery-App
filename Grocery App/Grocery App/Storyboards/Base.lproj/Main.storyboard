@@ -194,7 +194,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <connections>
                                             <action selector="textFieldChanged:" destination="gHj-iT-z5A" eventType="editingChanged" id="iOQ-cN-GDa"/>
                                         </connections>
@@ -221,7 +221,7 @@
                                             <segue destination="hzn-CG-C8f" kind="unwind" identifier="SaveItem" unwindAction="saveItem:" id="PMm-uz-wlG"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CzB-JN-GN3">
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CzB-JN-GN3">
                                         <rect key="frame" x="16" y="161" width="125" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="fbS-eq-aeb"/>
@@ -229,7 +229,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qrb-a0-huk">
                                         <rect key="frame" x="54.5" y="8" width="266" height="102"/>
