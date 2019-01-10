@@ -26,6 +26,7 @@
 /* Begin PBXFileReference section */
 		010CF78B21CABD4800A49D4F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		012AE5C221E7A50100B5DC26 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		012AE5C421E7B03C00B5DC26 /* Grocery App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Grocery App.entitlements"; sourceTree = "<group>"; };
 		0147F7DF21C99FE300863C89 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		01481ABC21C59062003A8EF7 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		01481ABE21C593C8003A8EF7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 		01B09A3021C4240C009F3F01 /* Grocery App */ = {
 			isa = PBXGroup;
 			children = (
+				012AE5C421E7B03C00B5DC26 /* Grocery App.entitlements */,
 				01309A3121D53FBB00871281 /* Storyboards */,
 				0159DFC821CC4A970051A908 /* Extensions */,
 				010CF78A21CABCFA00A49D4F /* Model */,
@@ -186,6 +188,11 @@
 				TargetAttributes = {
 					01B09A2D21C4240C009F3F01 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -432,6 +439,7 @@
 			baseConfigurationReference = F7DC7FAD8AB7739A0A3BCF0B /* Pods-Grocery App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Grocery App/Grocery App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 445ZVZXV26;
 				INFOPLIST_FILE = "Grocery App/Info.plist";
@@ -452,6 +460,7 @@
 			baseConfigurationReference = 96D2B332D90F3606852ABBD7 /* Pods-Grocery App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Grocery App/Grocery App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 445ZVZXV26;
 				INFOPLIST_FILE = "Grocery App/Info.plist";
