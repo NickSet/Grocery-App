@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Kbh-0A-9Np">
-                                <rect key="frame" x="60" y="249" width="255" height="169"/>
+                                <rect key="frame" x="60" y="258" width="255" height="169"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gTR-qE-2PL">
                                         <rect key="frame" x="0.0" y="0.0" width="255" height="35"/>
@@ -80,7 +80,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Kbh-0A-9Np" firstAttribute="centerY" secondItem="uLH-a4-s8r" secondAttribute="centerY" id="GhE-93-Iad"/>
+                            <constraint firstItem="wQv-hU-taH" firstAttribute="bottom" secondItem="Kbh-0A-9Np" secondAttribute="bottom" constant="240" id="Pfr-ij-uwR"/>
                             <constraint firstItem="wQv-hU-taH" firstAttribute="trailing" secondItem="Kbh-0A-9Np" secondAttribute="trailing" constant="60" id="cYT-aE-dZl"/>
                             <constraint firstItem="Kbh-0A-9Np" firstAttribute="centerX" secondItem="uLH-a4-s8r" secondAttribute="centerX" id="goK-9Z-PyD"/>
                             <constraint firstItem="Kbh-0A-9Np" firstAttribute="leading" secondItem="wQv-hU-taH" secondAttribute="leading" constant="60" id="yht-KV-nD0"/>
@@ -90,6 +90,7 @@
                     <connections>
                         <outlet property="loginButton" destination="3a8-fJ-BSJ" id="TBb-uQ-Lrd"/>
                         <outlet property="passwordTextField" destination="mnN-vS-vVs" id="zEk-I7-NtV"/>
+                        <outlet property="stackViewBottomConstraint" destination="Pfr-ij-uwR" id="gCJ-fn-AEZ"/>
                         <outlet property="stayLoggedInSwitch" destination="pfC-Nd-Xyv" id="oTb-y0-5hH"/>
                         <outlet property="userNameTextField" destination="gTR-qE-2PL" id="rd2-lK-qLR"/>
                     </connections>
