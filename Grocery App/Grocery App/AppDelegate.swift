@@ -18,6 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    
+        if Auth.auth().currentUser != nil {
+            let itemViewController = storyboard.instantiateViewController(withIdentifier: "ItemViewController")
+            self.window?.rootViewController = itemViewController
+            self.window?.makeKeyAndVisible()
+        } else {
+            let logInViewController = storyboard.instantiateViewController(withIdentifier: "LogInViewController")
+            self.window?.rootViewController = logInViewController
+        }
+        
         return true
     }
 

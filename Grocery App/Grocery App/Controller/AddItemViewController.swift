@@ -16,6 +16,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet var addItemButton: UIButton!
     @IBOutlet var addItemViewBottomConstraint: NSLayoutConstraint!
     
+    var user: User!
     var ref: DatabaseReference!
     var sections = ["drinks", "snacks", "pharmacy",  "toiletries", "nonperishable", "produce", "meat", "dairy", "bread", "frozen"]
     var selectedCategory: Int? {
@@ -74,8 +75,8 @@ class AddItemViewController: UIViewController {
             let date = Date().description
             let quantity = quantityTextField.text ?? ""
             let category = sections[selectedCategory!]
-            let itemToSave = Item(name: itemName, dateAdded: date, category: category, completed: false, quantity: quantity)
-            
+            let addedBy = user.firstInitial
+            let itemToSave = Item(name: itemName, dateAdded: date, category: category, completed: false, quantity: quantity, addedBy: addedBy)
             let itemRef = self.ref.child(itemName)
             itemRef.setValue(itemToSave.toAnyObject())
         }

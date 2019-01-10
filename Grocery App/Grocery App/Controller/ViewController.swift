@@ -34,6 +34,7 @@ class ViewController: UIViewController {
     var ref: DatabaseReference!
     var items: [Item] = []
     var itemsBySection: [String: [Item]] = [:]
+    var user: User!
     
     private var dataObjects: [Objects] = []
     
@@ -81,6 +82,12 @@ class ViewController: UIViewController {
                 self.loadingActivityView.stopAnimating()
             }
         })
+        
+        Auth.auth().addStateDidChangeListener { auth, user in
+            guard let user = user else { return }
+            self.user = User(authData: user)
+        }
+        
         self.itemTableView.reloadData()
     }
     
@@ -123,6 +130,12 @@ class ViewController: UIViewController {
         
         dataObjects[section].selected = !dataObjects[section].selected
         itemTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddItemSegue", let addItemVC = segue.destination as? AddItemViewController {
+            addItemVC.user = self.user
+        }
     }
 }
 
@@ -256,6 +269,15 @@ extension ViewController: UITableViewDataSource {
             cell.quantityLabel.text = item.quantity
             cell.setupDateLabel(stringDate: item.dateAdded)
             toggleCellCheckbox(cell, isCompleted: item.completed)
+            if item.addedBy == "n" {
+                let img = UIImage(named: "n-icon")
+                cell.nameIconImageView.image = img
+            } else if item.addedBy == "v" {
+                let img = UIImage(named: "v-icon")
+                cell.nameIconImageView.image = img
+            } else {
+                cell.nameIconImageView.isHidden = true
+            }
             return cell
         } else {
             print("Couldn't Convert")

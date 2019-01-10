@@ -26,10 +26,8 @@ class LoginViewController: UIViewController {
         center.addObserver(self, selector: #selector(keyboardWillBeShown(note:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         Auth.auth().addStateDidChangeListener() { auth, user in
-            // 2
             if user != nil {
-                // 3
-                //self.performSegue(withIdentifier: self.loginToVC, sender: nil)
+                self.performSegue(withIdentifier: "LoginToVC", sender: nil)
                 self.userNameTextField.text = nil
                 self.passwordTextField.text = nil
             }
@@ -43,10 +41,15 @@ class LoginViewController: UIViewController {
         stackViewBottomConstraint.constant = keyboardSize.height + padding
     }
     
-    func login(with username: String, and password: String) {
-        if stayLoggedInSwitch.isOn {
-            UserDefaults.standard.set(username, forKey: "username")
-            UserDefaults.standard.set(password, forKey: "password")
+    func login(with email: String, and password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { user, error in
+            if let error = error, user == nil {
+                let alert = UIAlertController(title: "Sign In Failed", message: error.localizedDescription, preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -79,6 +82,7 @@ extension LoginViewController: UITextFieldDelegate {
         }
         if textField.tag == 1 {
             //login
+            attemptLogin()
         }
         return true
     }

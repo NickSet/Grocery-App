@@ -11,7 +11,8 @@ import UIKit
 class ItemTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var quantityLabel: UILabel!
-    @IBOutlet var dateLabel: UILabel!    
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var nameIconImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
