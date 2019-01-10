@@ -102,6 +102,7 @@ class ViewController: UIViewController {
             cell.dateLabel.textColor = .black
             cell.quantityLabel.isHidden = false
             cell.dateLabel.isHidden = false
+            cell.nameIconImageView.isHidden = false
         } else {
             // TODO: Add guard checks
             let currentText = cell.nameLabel.text!
@@ -111,6 +112,7 @@ class ViewController: UIViewController {
             cell.nameLabel.textColor = .gray
             cell.quantityLabel.isHidden = true
             cell.dateLabel.isHidden = true
+            cell.nameIconImageView.isHidden = true
         }
     }
     
