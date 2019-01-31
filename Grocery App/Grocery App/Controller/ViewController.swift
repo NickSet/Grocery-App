@@ -27,8 +27,6 @@ private struct Objects {
 
 class ViewController: UIViewController {
     
-    
-
     @IBOutlet var itemTableView: UITableView!
     @IBOutlet var loadingActivityView: UIActivityIndicatorView!
     @IBOutlet var noItemsLabel: UILabel!
@@ -36,6 +34,7 @@ class ViewController: UIViewController {
     var ref: DatabaseReference!
     var items: [Item] = []
     var itemsBySection: [String: [Item]] = [:]
+    var user: User!
     
     private var dataObjects: [Objects] = []
     
@@ -48,7 +47,7 @@ class ViewController: UIViewController {
         // TODO: Look into a more elegant way to achieve this
         ref = Database.database().reference(withPath: "items")
         
-        ref.observe(.value, with: { snapshot in
+        ref.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
             
             var newItems: [Item] = []
             var newDataObjects: [Objects] = []
@@ -68,6 +67,8 @@ class ViewController: UIViewController {
                 newDataObjects.append(Objects(sectionName: key, sectionItems: value, selected: sectionShown))
             }
             newDataObjects.sort(by: { $0.sectionName < $1.sectionName })
+            
+            
             self.dataObjects = newDataObjects
             
             if newDataObjects.isEmpty {
@@ -81,6 +82,12 @@ class ViewController: UIViewController {
                 self.loadingActivityView.stopAnimating()
             }
         })
+        
+        Auth.auth().addStateDidChangeListener { auth, user in
+            guard let user = user else { return }
+            self.user = User(authData: user)
+        }
+        
         self.itemTableView.reloadData()
     }
     
@@ -95,6 +102,7 @@ class ViewController: UIViewController {
             cell.dateLabel.textColor = .black
             cell.quantityLabel.isHidden = false
             cell.dateLabel.isHidden = false
+            cell.nameIconImageView.isHidden = false
         } else {
             // TODO: Add guard checks
             let currentText = cell.nameLabel.text!
@@ -104,7 +112,7 @@ class ViewController: UIViewController {
             cell.nameLabel.textColor = .gray
             cell.quantityLabel.isHidden = true
             cell.dateLabel.isHidden = true
-            
+            cell.nameIconImageView.isHidden = true
         }
     }
     
@@ -125,26 +133,34 @@ class ViewController: UIViewController {
         dataObjects[section].selected = !dataObjects[section].selected
         itemTableView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddItemSegue", let addItemVC = segue.destination as? AddItemViewController {
+            addItemVC.user = self.user
+        }
+    }
 }
 
 // MARK: - IBActions
 extension ViewController {
     @IBAction func saveItem(_ segue: UIStoryboardSegue) {
-        print("Back in ViewController")
     }
     
     @IBAction func closeAddItemViewConroller(_ segue: UIStoryboardSegue) {
-        print("Back in ViewController")
     }
     
     @IBAction func clearItemsButonClicked(_ sender: UIBarButtonItem) {
-        print("Clear items clicked")
+        var itemsToDelete: [String: Any] = [:]
+
         for section in dataObjects {
             let sectionsCheckedItems = section.getCheckedItems()
             for checkedItem in sectionsCheckedItems {
-                checkedItem.ref?.removeValue()
+                print(checkedItem.name)
+                itemsToDelete[checkedItem.name] = NSNull()
+                //checkedItem.ref?.removeValue()
             }
         }
+        ref.updateChildValues(itemsToDelete)
     }
 }
 
@@ -174,7 +190,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55.0
+        return 46.0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -184,7 +200,17 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as? HeaderTableViewCell {
             headerCell.sectionLabel.text = dataObjects[section].sectionName
-            switch dataObjects[section].sectionName {
+            let sectionTitle = dataObjects[section].sectionName as String
+            switch sectionTitle {
+            case "drinks":
+                headerCell.emojiLabel.text = "🥤"
+                break
+            case "bread":
+                headerCell.emojiLabel.text = "🍞"
+                break
+            case "pharmacy":
+                headerCell.emojiLabel.text = "💊"
+                break
             case "dairy":
                 headerCell.emojiLabel.text = "🧀"
                 break
@@ -209,6 +235,18 @@ extension ViewController: UITableViewDataSource {
             default:
                 break
             }
+            
+            let sectionShown = UserDefaults.standard.bool(forKey: sectionTitle)
+            
+            if sectionShown {
+                headerCell.rotateChevron()
+            }
+            
+            let totalItems = dataObjects[section].sectionItems.count
+            let selectedItems = dataObjects[section].sectionItems.filter{ $0.completed}.count
+
+            headerCell.countLabel.text = "\(selectedItems) / \(totalItems)"
+            
             headerCell.tag = section
             let headerTapGesture = UITapGestureRecognizer()
             headerTapGesture.addTarget(self, action: #selector(ViewController.sectionHeaderWasTouched(_:)))
@@ -233,6 +271,15 @@ extension ViewController: UITableViewDataSource {
             cell.quantityLabel.text = item.quantity
             cell.setupDateLabel(stringDate: item.dateAdded)
             toggleCellCheckbox(cell, isCompleted: item.completed)
+            if item.addedBy == "n" {
+                let img = UIImage(named: "n-icon")
+                cell.nameIconImageView.image = img
+            } else if item.addedBy == "v" {
+                let img = UIImage(named: "v-icon")
+                cell.nameIconImageView.image = img
+            } else {
+                cell.nameIconImageView.isHidden = true
+            }
             return cell
         } else {
             print("Couldn't Convert")

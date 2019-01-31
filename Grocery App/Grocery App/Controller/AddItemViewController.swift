@@ -16,11 +16,12 @@ class AddItemViewController: UIViewController {
     @IBOutlet var addItemButton: UIButton!
     @IBOutlet var addItemViewBottomConstraint: NSLayoutConstraint!
     
+    var user: User!
     var ref: DatabaseReference!
-    var sections = ["produce", "meat", "dairy", "nonperishable", "snacks", "frozen", "toiletries"]
+    var sections = ["drinks", "snacks", "pharmacy",  "toiletries", "nonperishable", "produce", "meat", "dairy", "bread", "frozen"]
     var selectedCategory: Int? {
         didSet {
-            validateItem()
+            _ = validateItem()
         }
     }
     
@@ -31,6 +32,8 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.quantityTextField.delegate = self
+        self.itemNameTextField.delegate = self
         ref = Database.database().reference(withPath: "items")
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(keyboardWillBeShown(note:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -46,22 +49,23 @@ class AddItemViewController: UIViewController {
         //self.view.frame.origin.y -= keyboardSize.height
     }
     
-    func validateItem() {
+    func validateItem() -> Bool {
         guard let _ = selectedCategory, let _ = itemNameTextField.text else {
             addItemButton.isEnabled = false
             addItemButton.backgroundColor = .white
             addItemButton.tintColor = UIColor(displayP3Red: 161.0/255.0, green: 161.0/255.0, blue: 161.0/255.0, alpha: 1.0)
-            return
+            return false
         }
         guard let itemName = itemNameTextField.text, itemName.count > 0 else {
             addItemButton.isEnabled = false
             addItemButton.backgroundColor = UIColor.clear
             addItemButton.tintColor = UIColor(displayP3Red: 161.0/255.0, green: 161.0/255.0, blue: 161.0/255.0, alpha: 1.0)
-            return
+            return false
         }
         addItemButton.backgroundColor = UIColor(displayP3Red: 20.0/255.0, green: 145.0/255.0, blue: 47.0/255.0, alpha: 1.0)
         addItemButton.tintColor = .white
         addItemButton.isEnabled = true
+        return true
     }
     
     // MARK: - Navigation
@@ -71,14 +75,15 @@ class AddItemViewController: UIViewController {
             let date = Date().description
             let quantity = quantityTextField.text ?? ""
             let category = sections[selectedCategory!]
-            let itemToSave = Item(name: itemName, dateAdded: date, category: category, completed: false, quantity: quantity)
-            
-            let itemRef = self.ref.child(itemName.lowercased())
+            let addedBy = user.firstInitial
+            let itemToSave = Item(name: itemName, dateAdded: date, category: category, completed: false, quantity: quantity, addedBy: addedBy)
+            let itemRef = self.ref.child(itemName)
             itemRef.setValue(itemToSave.toAnyObject())
         }
      }
     
     func updateButtonBorders(selected: Int) {
+        print("Selected: \(sections[selected])")
         for button in buttonsArray {
             button.layer.borderColor = UIColor.clear.cgColor
             button.layer.borderWidth = 4.0
@@ -91,11 +96,25 @@ class AddItemViewController: UIViewController {
 //MARK: - IBActions
 extension AddItemViewController {
     @IBAction func textFieldChanged(_ sender: UITextField) {
-        validateItem()
+        _ = validateItem()
     }
     
     @IBAction func itemTypeButtonTapped(_ sender: UIButton) {
         updateButtonBorders(selected: sender.tag)
         selectedCategory = sender.tag
+    }
+}
+
+extension AddItemViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.tag == 0 {
+            quantityTextField.becomeFirstResponder()
+        }
+        if textField.tag == 1 {
+            if validateItem() {
+                performSegue(withIdentifier: "SaveItem", sender: nil)
+            }
+        }
+        return true
     }
 }
